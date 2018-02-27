@@ -22,8 +22,7 @@ namespace VPackage
 {
     public class MyApp
     {
-        public const string FILE_PATH = @"e:\vmendele";
-        public const string FILE_NAME = "settings.json";
+        public const string FILE_NAME = @"\config\settings.json";
 
         #region Fields
         /// <summary>
@@ -163,7 +162,7 @@ namespace VPackage
             AppServer.EndPoint.Port = config.Port;
 
             string json = JSONSerializer.Serialize<ApplicationConfiguration>(config);
-            FileManager.Write(FILE_PATH, FILE_NAME, json);
+            FileManager.Write(AppDomain.CurrentDomain.BaseDirectory + FILE_NAME, json, FileManager.WriteOptions.CreateDirectory);
         }
         #endregion
 

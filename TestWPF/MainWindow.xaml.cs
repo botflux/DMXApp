@@ -41,10 +41,14 @@ namespace TestWPF
         {
             InitializeComponent();
             ApplicationConfiguration config;
-            
-            string json = FileManager.Read(MyApp.FILE_PATH + "\\" + MyApp.FILE_NAME);
-            config = JSONSerializer.Deserialize<ApplicationConfiguration>(json);
 
+            if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + MyApp.FILE_NAME))
+                config = ApplicationConfiguration.Default;
+            else
+            {
+                string json = FileManager.Read(AppDomain.CurrentDomain.BaseDirectory + MyApp.FILE_NAME);
+                config = JSONSerializer.Deserialize<ApplicationConfiguration>(json);
+            }
             Configuration = config;
             
             myApp = new MyApp(config);

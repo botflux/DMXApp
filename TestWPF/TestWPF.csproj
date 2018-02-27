@@ -49,19 +49,17 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="VPackage.Files, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DMXLibraries\VPackage.Files\bin\Debug\VPackage.Files.dll</HintPath>
+    <Reference Include="VPackage.Files">
+      <HintPath>..\..\DMXLibrairies\VPackage.Files\bin\Debug\VPackage.Files.dll</HintPath>
     </Reference>
-    <Reference Include="VPackage.Json, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DMXLibraries\VPackage.Json\bin\Debug\VPackage.Json.dll</HintPath>
+    <Reference Include="VPackage.Json">
+      <HintPath>..\..\DMXLibrairies\VPackage.Json\bin\Debug\VPackage.Json.dll</HintPath>
     </Reference>
     <Reference Include="VPackage.Network">
-      <HintPath>..\..\DMXLibraries\VPackage.Network\bin\Debug\VPackage.Network.dll</HintPath>
+      <HintPath>..\..\DMXLibrairies\VPackage.Network\bin\Debug\VPackage.Network.dll</HintPath>
     </Reference>
     <Reference Include="VPackage.Parser">
-      <HintPath>..\..\DMXLibraries\VPackage.Parser\bin\Debug\VPackage.Parser.dll</HintPath>
+      <HintPath>..\..\DMXLibrairies\VPackage.Parser\bin\Debug\VPackage.Parser.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

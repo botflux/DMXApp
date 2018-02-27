@@ -13,6 +13,21 @@ namespace VPackage
     [DataContract]
     public class ApplicationConfiguration : INotifyPropertyChanged
     {
+        public static ApplicationConfiguration Default
+        {
+            get
+            {
+                return new ApplicationConfiguration()
+                {
+                    Hostname = "0.0.0.0",
+                    Port = 0,
+                    Target = 0,
+                    ReceivePort = 0
+                };
+            }
+        }
+
+
         /// <summary>
         /// Nom d'hôte distant
         /// </summary>
