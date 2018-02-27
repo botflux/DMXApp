@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Windows.Media;
 using System.Runtime.CompilerServices;
 using VPackage.Parser;
+using System.Windows.Input;
 
 namespace VPackage.Graphics
 {
@@ -125,6 +126,17 @@ namespace VPackage.Graphics
         }
 
         /// <summary>
+        /// Renvoie la commande servant à remettre à zéro une couleur
+        /// </summary>
+        public ICommand ResetColor
+        {
+            get
+            {
+                return resetColor;
+            }
+        }
+
+        /// <summary>
         /// Renvoie la couleur sous forme de couleur
         /// </summary>
         /// <returns></returns>
@@ -147,5 +159,15 @@ namespace VPackage.Graphics
                 new DataWrapper("blue", toColor.B)
             });
         }
+
+        /// <summary>
+        /// Commande qui remet à zéro une couleur
+        /// </summary>
+        private ICommand resetColor = new RelayCommand<ColorWrapper>((color) =>
+        {
+            color.R = 0;
+            color.G = 0;
+            color.B = 0;
+        });
     }
 }

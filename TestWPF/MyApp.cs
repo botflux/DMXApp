@@ -72,17 +72,6 @@ namespace VPackage
         }
 
         /// <summary>
-        /// Renvoie la commande servant à remettre à zéro une couleur
-        /// </summary>
-        public ICommand ResetColor
-        {
-            get
-            {
-                return resetColor;
-            }
-        }
-
-        /// <summary>
         /// Renvoie la commande servant à envoyer la trame de la couleur au serveur
         /// </summary>
         public ICommand SendData
@@ -167,15 +156,7 @@ namespace VPackage
         #endregion
 
         #region Command
-        /// <summary>
-        /// Commande qui remet à zéro une couleur
-        /// </summary>
-        private ICommand resetColor = new RelayCommand<ColorWrapper>((color) =>
-        {
-            color.R = 0;
-            color.G = 0;
-            color.B = 0;
-        });
+        
 
         /// <summary>
         /// Commande qui envoie la trame de la couleur au serveur

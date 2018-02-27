@@ -13,7 +13,7 @@
                 <MenuItem Header="_Configuration" Command="{Binding ChangeConfiguration}" CommandParameter="{Binding}" />
             </MenuItem>
             <MenuItem Header="_Couleur">
-                <MenuItem Header="_Remise à zéro" Command="{Binding ResetColor}" CommandParameter="{Binding MainColor}" />
+                <MenuItem Header="_Remise à zéro" Command="{Binding MainColor.ResetColor}" CommandParameter="{Binding MainColor}" />
             </MenuItem>
         </Menu>
         <Grid x:Name="grid">
