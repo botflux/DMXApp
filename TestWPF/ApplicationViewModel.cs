@@ -20,11 +20,12 @@ using System.Runtime.CompilerServices;
 
 namespace VPackage
 {
-    public class MyApp
+    public class ApplicationViewModel
     {
         public const string FILE_NAME = @"\config\settings.json";
 
         #region Fields
+        private ConfigurationHandler configurationHandler;
         /// <summary>
         /// Client utilisé pour l'application
         /// </summary>
@@ -123,12 +124,16 @@ namespace VPackage
         #endregion
 
         #region Constructors
-        public MyApp (ApplicationConfiguration config)
+        public ApplicationViewModel ()
         {
-            appClient = new Client(config.Hostname, config.Port);
-            appServer = new Server(config.ReceivePort);
+            configurationHandler = new ConfigurationHandler(AppDomain.CurrentDomain.BaseDirectory + FILE_NAME);
+
+            MessageBox.Show(configurationHandler.LastApplicationConfiguration.ToString());
+
+            appClient = new Client(configurationHandler.LastApplicationConfiguration.Hostname, configurationHandler.LastApplicationConfiguration.Port);
+            appServer = new Server(configurationHandler.LastApplicationConfiguration.ReceivePort);
             mainColor = new ColorWrapper();
-            Target = config.Target;
+            Target = configurationHandler.LastApplicationConfiguration.Target;
             appServer.StartListen();
         }
         #endregion
@@ -156,12 +161,11 @@ namespace VPackage
         #endregion
 
         #region Command
-        
 
         /// <summary>
         /// Commande qui envoie la trame de la couleur au serveur
         /// </summary>
-        private ICommand sendData = new RelayCommand<MyApp>((app) => 
+        private ICommand sendData = new RelayCommand<ApplicationViewModel>((app) => 
         {
             string colorEncoded = app.MainColor.Encode();
             string target = FrameParser.Encode("cible", app.Target);
@@ -174,16 +178,9 @@ namespace VPackage
         /// <summary>
         /// Commande qui change la configuration de l'application
         /// </summary>
-        private ICommand changeConfiguration = new RelayCommand<MyApp>((app) =>
+        private ICommand changeConfiguration = new RelayCommand<ApplicationViewModel>((app) =>
         {
-            Settings settingsDialog = new Settings();
-            settingsDialog.Configuration = MainWindow.Configuration;
-
-            if (settingsDialog.ShowDialog() == true)
-            {
-                MainWindow.Configuration = settingsDialog.Configuration;
-                app.ApplyNewConfiguration(MainWindow.Configuration);
-            }
+            
         });
 
         #endregion

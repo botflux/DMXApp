@@ -4,8 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWPF"
+        xmlns:VPackage="clr-namespace:VPackage"
         mc:Ignorable="d"
-        Title="MainWindow" Height="810" Width="1440" MinHeight="540" MinWidth="960" Closing="Window_Closing">
+        Title="MainWindow" Height="810" Width="1440" MinHeight="540" MinWidth="960"
+        >
+    <Window.DataContext>
+        <VPackage:ApplicationViewModel />
+    </Window.DataContext>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_Fichier">

@@ -26,8 +26,7 @@ namespace VPackage
                 };
             }
         }
-
-
+        
         /// <summary>
         /// Nom d'hôte distant
         /// </summary>
@@ -140,6 +139,11 @@ namespace VPackage
             Hostname = "";
             Port = 0;
             Target = 0;
+        }
+
+        public override string ToString()
+        {
+            return string.Format("H:{0};RP:{1};SP:{2};T:{3};", Hostname, ReceivePort, Port, Target);
         }
     }
 }
